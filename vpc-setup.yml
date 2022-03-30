@@ -1,0 +1,22 @@
+- host: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Import VPC variables
+      include_vars: vars/vpc_setup
+
+
+    - name: Create cloudtech vpc
+      ec2_vpc_net:
+        name: "{{vpc_name}}"
+        cidr_block: "{{vpcCidr}}"
+        region: "{{region}}"
+        tenancy: default
+        dns_support: yes
+        dns_hostnames: yes
+        state: "{{state}}"
+      register: vpcout
+
+
+
+
