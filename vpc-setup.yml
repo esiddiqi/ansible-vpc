@@ -124,4 +124,4 @@
             gateway_id: "{{igw_out.gateway.id}}"
         tags:
           Name: vprofile-pubRouteTable
-        register: pubRT_out
+      register: pubRT_out
