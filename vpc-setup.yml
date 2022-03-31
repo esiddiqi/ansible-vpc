@@ -131,13 +131,13 @@
 
     - name: Create NAT Gateway for pvt subnets
       ec2_vpc_nat_gateway:
-        vpc_id: "{{vpcout.vpc.id}}"
+#        vpc_id: "{{vpcout.vpc.id}}"
         region: "{{region}}"
         state: "{{state}}"
         subnet_id: "{{pubsub1_out.subnet.id}}"
         wait: yes
-        tags:
-          Name: natGTW
+#        tags:
+#          Name: natGTW
         if_exist_do_not_create: true
       register: natgtw_out
 
