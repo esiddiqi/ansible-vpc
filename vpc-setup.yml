@@ -50,7 +50,7 @@
 
     - name: create public subnet 3 in AZ-3
       ec2_vpc_subnet:
-          state: "{{state}}"
+          state: absent
           vpc_id: "{{vpcout.vpc.id}}"
           az: "{{zone3}}"
           cidr: "{{PubSub3Cidr}}"
