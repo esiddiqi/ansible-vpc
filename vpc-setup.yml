@@ -129,8 +129,8 @@
       register: pubRT_out
 
 
-    - name: Create NAT Gateway from pvt subnets
-      vpc_nat_gateway:
+    - name: Create NAT Gateway for pvt subnets
+      ec2_vpc_nat_gateway:
         vpc_id: "{{vpcout.vpc.id}}"
         region: "{{region}}"
         state: "{{state}}"
