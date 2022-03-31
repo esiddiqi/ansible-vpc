@@ -61,8 +61,38 @@
       register: pubsub3_out
 
 
+    - name: create private subnet 1 in AZ-1
+      ec2_vpc_subnet:
+        state: "{{state}}"
+        vpc_id: "{{vpcout.vpc.id}}"
+        az: "{{zone1}}"
+        cidr: "{{PriSub1Cidr}}"
+        region: "{{region}}"
+        map_public: no
+        tags:
+          Name: vprofile-prisub1
+      register: prisub1_out
 
+    - name: create private subnet 2 in AZ-2
+      ec2_vpc_subnet:
+        state: "{{state}}"
+        vpc_id: "{{vpcout.vpc.id}}"
+        az: "{{zone2}}"
+        cidr: "{{PriSub2Cidr}}"
+        region: "{{region}}"
+        map_public: no
+        tags:
+          Name: vprofile-prisub2
+      register: prisub2_out
 
-
-
-
+    - name: create private subnet 3 in AZ-3
+      ec2_vpc_subnet:
+        state: "{{state}}"
+        vpc_id: "{{vpcout.vpc.id}}"
+        az: "{{zone3}}"
+        cidr: "{{PriSub3Cidr}}"
+        region: "{{region}}"
+        map_public: no
+        tags:
+          Name: vprofile-prisub3
+      register: prisub3_out
