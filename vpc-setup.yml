@@ -17,6 +17,23 @@
         state: "{{state}}"
       register: vpcout
 
+    - debug:
+        var: vpcout
+
+    - name: create public subnet 1 in AZ-1
+      ec2_vpc_subnet:
+        state: "{{state}}"
+        vpc_id: "{{vpcout.vpc.id}}"
+        az: "{{zone1}}"
+        cidr: "{{PubSub1Cidr}}"
+        region: "{{region}}"
+        map_public: yes
+        tags:
+          Name: vprofile-pubsub1
+      register: pubsub1_out
+
+
+
 
 
 
