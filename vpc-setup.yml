@@ -109,8 +109,9 @@
           Name: vprofile_IGW
       register: igw_out
 
-    debug:
-      var: igw_out
+    - debug:
+       var: igw_out
+
     - name: create public subnet route table
       ec2_vpc_route_table:
         vpc_id: "{{vpcout.vpc.id}}"
