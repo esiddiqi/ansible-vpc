@@ -96,3 +96,13 @@
         tags:
           Name: vprofile-prisub3
       register: prisub3_out
+
+
+    - name: create Internet Gateway
+      ec2_vpc_igw:
+        region: "{{region}}"
+        state: "{{state}}"
+        vpc_id: "{{vpcout.vpc.id}}"
+        tags:
+          Name: vprofile_IGW
+      register: igw_out
