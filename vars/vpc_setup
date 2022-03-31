@@ -24,7 +24,7 @@ zone2: us-east-2b
 zone3: us-east-2c
 
 #Define whether the vpc should be present=Deploy or absent=Destroy
-state: present
+state: absent
 
 
 
