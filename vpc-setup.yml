@@ -152,7 +152,7 @@
          - "{{prisub3_out.subnet.id}}"
         routes:
          - dest: 0.0.0.0/0
-           gateway_id: "{{natgtw_out.gateway_id}}"
+           gateway_id: "{{natgtw_out.nat_gateway_id}}"
         tags:
           Name: vprofile-priRouteTable
       register: priRT_out
