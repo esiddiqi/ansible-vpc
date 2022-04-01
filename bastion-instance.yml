@@ -20,8 +20,6 @@
       ec2_key:
         name: bastion-keypair
         region: "{{region}}"
-        tags:
-          Name: ec2-bastion-keypair
       register: key_out
 
     - name: copy the pem key to a file
