@@ -42,6 +42,10 @@
          vpc_id: "{{vpcid}}"
       register: bastionsg_out
 
+
+    - debug:
+        var: bastionsg_out
+
     - name: create bastion instance
       ec2:
         key_name: bastion-keypair
