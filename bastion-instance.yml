@@ -28,8 +28,8 @@
     - name: copy the pem key to a file
       copy:
         content: "{{key_out.key.private_key}}"
-        dest: "./bastion-key.pem"
-   #   when: key_out.changed
+        dest: "~/bastion-key.pem"
+      when: key_out.changed
 
     - name: Create Bastion Host Security Group
       ec2_group:
