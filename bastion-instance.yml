@@ -13,10 +13,8 @@
       include_vars: vars/output_vars
 
 
-    - name: create key pair for bastion EC2 instances
-      ec2_keypair:
-
-
+#    - name: create key pair for bastion EC2 instances
+#     ec2_keypair:
 
     - name: create Security Group for bastion host
       ec2_key:
