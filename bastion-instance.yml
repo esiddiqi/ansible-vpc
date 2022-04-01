@@ -11,3 +11,60 @@
 
     - name: Import VPC setup variable
       include_vars: vars/output_vars
+
+
+    - name: create key pair for bastion EC2 instances
+      ec2_keypair:
+
+
+
+    - name: create Security Group for bastion host
+      ec2_key:
+        name: bastion-keypair
+        region: "{{region}}"
+        tags:
+          Name: ec2-bastion-keypair
+      register: key_out
+
+    - name: copy the pem key to a file
+      copy:
+        content: "{{key_out.key.private_key}}"
+        dest: "./bastion-key.pem"
+        when: key_out.changed
+
+    - name: Create Bastion Host Security Group
+      ec2_group:
+         description: Allow SSH to bastion group from MY ip
+         name: bastion-sg
+         region: "{{region}}"
+         state: present
+         rule:
+           - proto: tcp
+             from_port: 22
+             to_port: 22
+             cidr_ip: "{{MYIP}}"
+         vpc_id: "{{vpcid}}"
+      register: bastionsg_out
+
+    - name: create bastion instance
+      ec2:
+        key_name: bastion-keypair
+        instance_type: t2.micro
+        image: "{{bastion_host_ami}}"
+        wait: yes
+        wait_timeout: 300
+        instance_tags:
+          Name: "Bastion_Host"
+          Project: Tiger_project
+          Owner: Emaad
+        exact_count: 1
+        count_tag:
+          Name: "Bastion_Host"
+          Project: Tiger_project
+          Owner: Emaad
+        group_id: "{{bastionsg_out.group_id}}"
+      register: Bastionec2_out
+
+
+
+
