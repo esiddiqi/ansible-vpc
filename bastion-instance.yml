@@ -51,7 +51,7 @@
 
     - name: create bastion instance
       ec2:
-        key_name: bastion-keypair
+        key_name: "{{key_out.key.name}}"
         instance_type: t2.micro
         image: "{{bastion_host_ami}}"
         region: "{{region}}"
@@ -67,7 +67,7 @@
           Project: Tiger_project
           Owner: Emaad
         group_id: "{{bastionsg_out.group_id}}"
-      register: Bastionec2_out
+      register: bastionec2_out
 
 
 
