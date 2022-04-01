@@ -29,7 +29,7 @@
       copy:
         content: "{{key_out.key.private_key}}"
         dest: "./bastion-key.pem"
-      when: key_out.changed
+   #   when: key_out.changed
 
     - name: Create Bastion Host Security Group
       ec2_group:
