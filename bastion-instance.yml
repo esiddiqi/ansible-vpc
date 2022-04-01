@@ -47,6 +47,7 @@
         key_name: bastion-keypair
         instance_type: t2.micro
         image: "{{bastion_host_ami}}"
+        region: "{{region}}"
         wait: yes
         wait_timeout: 300
         instance_tags:
