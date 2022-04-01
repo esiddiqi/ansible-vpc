@@ -6,7 +6,7 @@
       include_vars: vars/vpc_setup
 
 
-    - name: Create cloudtech vpc
+    - name: Create CloudTech VPC
       ec2_vpc_net:
         name: "{{vpc_name}}"
         cidr_block: "{{vpcCidr}}"
